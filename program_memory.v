@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer: 
+// Engineer: Mithilesh thakkar
 // 
-// Create Date:    13:26:12 08/29/2019 
+// Create Date:    14:35:17 08/30/2019 
 // Design Name: 
 // Module Name:    program_memory 
 // Project Name: 
@@ -68,9 +68,7 @@ begin
 end
 
 wire [3:0] tag_cur = current_address[15:12];
-//wire [7:0] cb_cur = current_address[11:4];
 wire [3:0] tag_cache = tag[current_address[11:0]];
-//wire [3:0] offset_cur = current_address[3:0];
 assign final_out = (valid[current_address[11:0]] && (tag_cur == tag_cache))? cache[current_address[11:0]] : PM_out;
 
 wire [31:0] PM_prev; //Previous output from program memory.
@@ -95,13 +93,5 @@ begin
 		end
 	end
 end
-
-//always @(posedge clk)
-//begin
-//		if (tag_cur == tag_cache)
-//		begin
-//			
-//		end
-//end
 
 endmodule
